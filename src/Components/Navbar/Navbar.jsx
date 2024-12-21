@@ -7,6 +7,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { Tooltip } from 'react-tooltip'
 import { GoSignOut } from "react-icons/go";
 import Swal from "sweetalert2";
+import { MdAssignmentAdd, MdOutlineAssignmentInd } from "react-icons/md";
 const Navbar = () => {
       const { user, signOutUser } = useContext(AuthContext)
 
@@ -48,7 +49,9 @@ const Navbar = () => {
                                           tabIndex={0}
                                           className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-2 shadow">
                                           <NavLink>Assignments</NavLink>
-                                          <NavLink>Pending Assignments</NavLink>
+                                          {
+                                                user&&<NavLink>Pending Assignments</NavLink>
+                                          }
                                     </ul>
                               </div>
                               <Link to={'/'} className=" flex items-center text-xl md:text-2xl lg:text-3xl font-bold">
@@ -67,7 +70,9 @@ const Navbar = () => {
                               <div className="hidden lg:flex mr-8">
                                     <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-gray-500  text-[16px]">
                                           <NavLink>Assignments</NavLink>
-                                          {/* <NavLink>Pending Assignments</NavLink> */}
+                                          {
+                                                user&&<NavLink>Pending Assignments</NavLink>
+                                          }
 
                                     </ul>
                               </div>
@@ -98,11 +103,12 @@ const Navbar = () => {
                                                 </div>
                                                 <ul
                                                       tabIndex={0}
-                                                      className="menu menu-sm dropdown-content rounded text-indigo-700 bg-indigo-50   z-[1] mt-3 w-52 p-4 shadow-md shadow-indigo-400  font-semibold">
+                                                      className="menu menu-sm dropdown-content rounded text-gray-500 w-fit  z-[1] mt-3 p-4 shadow-md shadow-primary-color2 font-semibold space-y-2">
 
-
+                                                      <Link className=" flex gap-1 text-center"><MdAssignmentAdd className=" text-xl" /> CreateAssignments</Link>
+                                                      <Link className=" flex gap-1 text-center"><MdOutlineAssignmentInd className=" text-xl" /> MyAttemptedAssignments</Link>
                                                       <div className="divider my-0"></div>
-                                                      <button onClick={handleSignOut} className=" btn btn-xs border flex gap-1 items-center">
+                                                      <button onClick={handleSignOut} className=" btn btn-xs border flex gap-1 rounded items-center">
                                                             <FaSignOutAlt></FaSignOutAlt> Logout </button>
                                                 </ul>
                                           </div>
