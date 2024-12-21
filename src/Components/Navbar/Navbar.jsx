@@ -1,11 +1,44 @@
 import { Link, NavLink } from "react-router-dom";
 import 'animate.css';
 import { TfiMenuAlt } from "react-icons/tfi";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Authprovider";
+import { FaSignOutAlt } from "react-icons/fa";
+import { Tooltip } from 'react-tooltip'
+import { GoSignOut } from "react-icons/go";
+import Swal from "sweetalert2";
 const Navbar = () => {
+      const { user, signOutUser } = useContext(AuthContext)
 
+      const handleSignOut = () => {
+            Swal.fire({
+                  title: "Sign Out",
+
+                  text: "Are you sure you want to sign out?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#ff0000",
+                  cancelButtonColor: "#00BCD4",
+                  confirmButtonText: "Sign Out",
+                  customClass: "shadow-md shadow-primary-color2 rounded-lg"
+            }).then((result) => {
+                  if (result.isConfirmed) {
+                        signOutUser()
+                              .then(() => {
+                                    Swal.fire({
+                                          position: "center",
+                                          icon: "success",
+                                          title: "Sign Out Successful",
+                                          showConfirmButton: false,
+                                          timer: 1000
+                                        });
+                              })
+                  }
+            });
+      }
       return (
             <div>
-                  <div className="navbar bg-base-100">
+                  <div className="navbar md:w-11/12 mx-auto">
                         <div className="navbar-start">
                               <div className="dropdown">
                                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,10 +71,48 @@ const Navbar = () => {
 
                                     </ul>
                               </div>
-                              <div className=" flex gap-2">
-                                    <Link to="/login" className=" btn btn-sm md:btn-md btn-outline hover:bg-transparent hover:text-primary-color border-primary-color">Login</Link>
-                                    <Link className=" btn btn-sm md:btn-md  hover:bg-primary-color bg-primary-color text-white">Register</Link>
-                              </div>
+
+                              {
+                                    user ? <div className=" flex items-center gap-2">
+                                          <Tooltip
+                                                anchorSelect=".user-name-tooltip"
+                                                place="left"
+                                                effect="solid"
+
+                                                style={{
+                                                      backgroundColor: "#00BCD4", // ব্যাকগ্রাউন্ড রঙ
+                                                      color: "#FFFFFF", // টেক্সট রঙ
+                                                      borderRadius: "8px",
+                                                      padding: "8px",
+                                                }}
+                                          >
+                                                {user.displayName}
+                                          </Tooltip>
+                                          <div className="dropdown dropdown-end">
+                                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle  avatar">
+                                                      <div className="w-10 user-name-tooltip  rounded-full">
+                                                            <img
+                                                                  alt={user?.displayName}
+                                                                  src={user.photoURL || "https://cdn2.vectorstock.com/i/1000x1000/44/01/default-avatar-photo-placeholder-icon-grey-vector-38594401.jpg"} />
+                                                      </div>
+                                                </div>
+                                                <ul
+                                                      tabIndex={0}
+                                                      className="menu menu-sm dropdown-content rounded text-indigo-700 bg-indigo-50   z-[1] mt-3 w-52 p-4 shadow-md shadow-indigo-400  font-semibold">
+
+
+                                                      <div className="divider my-0"></div>
+                                                      <button onClick={handleSignOut} className=" btn btn-xs border flex gap-1 items-center">
+                                                            <FaSignOutAlt></FaSignOutAlt> Logout </button>
+                                                </ul>
+                                          </div>
+                                          <button onClick={handleSignOut} className=" btn-circle  text-xl"><GoSignOut /></button>
+                                    </div> : <div className=" flex gap-2">
+                                          <Link to="/login" className=" btn btn-sm md:btn-md btn-outline hover:bg-transparent hover:text-primary-color border-primary-color">Login</Link>
+                                          <Link className=" btn btn-sm md:btn-md  hover:bg-primary-color bg-primary-color text-white">Register</Link>
+                                    </div>
+                              }
+
                         </div>
                   </div>
             </div>
