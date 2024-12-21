@@ -7,3 +7,9 @@
       background-size: cover;
       background-repeat: no-repeat;
 }
+.hero-cercle {
+      
+            --animate-duration: 7s;
+            --animate-repeat: ;
+          
+}

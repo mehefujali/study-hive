@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { AuthContext } from "../../context/Authprovider";
-import { Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 
 const Login = () => {
       const {state} = useLocation()
@@ -55,6 +55,7 @@ const Login = () => {
                               </form>
                                      <div className="divider">OR</div>
                                      <button onClick={handleGoogleLogin} className=" btn bg-transparent border w-full"><FcGoogle className=" text-3xl" />Continue with google</button>
+                                     <p className=" text-center mt-2">{`don't have an account?`} <Link className="text-primary-color" to='/register'>Register</Link></p>
                         </div>
                   </div>
             </div>

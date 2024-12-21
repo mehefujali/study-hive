@@ -118,7 +118,7 @@ const Navbar = () => {
                                                 <button onClick={handleSignOut} className=" btn-circle  text-xl"><GoSignOut /></button>
                                           </div> : <div className=" flex gap-2">
                                                 <Link to="/login" className=" btn btn-sm md:btn-md btn-outline hover:bg-transparent hover:text-primary-color border-primary-color">Login</Link>
-                                                <Link className=" btn btn-sm md:btn-md  hover:bg-primary-color bg-primary-color text-white">Register</Link>
+                                                <Link to="/register" className=" btn btn-sm md:btn-md  hover:bg-primary-color bg-primary-color text-white">Register</Link>
                                           </div>
                                     }
 
