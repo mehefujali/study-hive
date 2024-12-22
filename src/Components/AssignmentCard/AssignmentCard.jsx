@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { FaEdit } from "react-icons/fa";
 import { MdOutlineAssignment } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 
 const AssignmentCard = ({ assignment }) => {
@@ -18,9 +19,9 @@ const AssignmentCard = ({ assignment }) => {
                         </div>
                         <div className="divider my-0 py-0"></div>
                         <div className=" p-6 flex flex-col md:flex-row ">
-                              <button className=" btn flex-1 btn-error text-white rounded"><RiDeleteBinLine className="text-lg" /> delete</button>
-                              <button className=" btn flex-1 bg-primary-color2 text-white rounded"><FaEdit />Update</button>
-                              <button className=" btn flex-1 flex items-center gap-2 bg-primary-color text-white rounded"><MdOutlineAssignment className=" text-lg" />View </button>
+                              <Link className=" btn flex-1 btn-error text-white rounded"><RiDeleteBinLine className="text-lg" /> delete</Link>
+                              <Link className=" btn flex-1 bg-primary-color2 text-white rounded"><FaEdit />Update</Link>
+                              <Link to={`/assignment-details/${assignment._id}`} className=" btn flex-1 flex items-center gap-2 bg-primary-color text-white rounded"><MdOutlineAssignment className=" text-lg" />View </Link>
                         </div>
                   </div>
             </div>

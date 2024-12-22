@@ -11,6 +11,8 @@ const Assignments = () => {
             axios.get(`${import.meta.env.VITE_backend_URL}/assignments`)
                   .then(res => setAssignments(res.data))
       }, [])
+
+      
       return (
             <div >
                   <div>
@@ -43,6 +45,7 @@ const Assignments = () => {
                                                 <div>
                                                       <label className=" text-sm border rounded-md p-2" htmlFor=".filter-select">Filter :
                                                             <select name="" id="" className=" filter-select select select-sm  focus:border-none focus:outline-none">
+                                                                  <option value="Easy">All</option>
                                                                   <option value="Easy">Easy</option>
                                                                   <option value="Midium">Midium</option>
                                                                   <option value="Heard">Heard</option>

@@ -6,33 +6,42 @@ import Register from "../pages/Register/Register";
 import PriveteRoute from "../Private/PriveteRoute";
 import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 import Assignments from "../pages/Assignments/Assignments";
+import AssignmentDetails from "../pages/AssignmentDetails/AssignmentDetails";
 
 const routes = createBrowserRouter([
       {
-            path:'/',
-            element: <Root></Root> ,
-            children : [
+            path: '/',
+            element: <Root></Root>,
+            children: [
                   {
-                        path : '/' ,
-                        element : <Home></Home>
-                  } ,
+                        path: '/',
+                        element: <Home></Home>
+                  },
                   {
-                        path: 'login' ,
+                        path: 'login',
                         element: <Login></Login>
                   },
                   {
-                        path: 'register' ,
-                        element: <Register/>
+                        path: 'register',
+                        element: <Register />
                   },
                   {
-                        path : 'create-assignment' ,
-                        element : <PriveteRoute>
-                              <CreateAssignment/>
+                        path: 'create-assignment',
+                        element: <PriveteRoute>
+                              <CreateAssignment />
                         </PriveteRoute>
                   },
                   {
                         path: 'assignments',
-                        element : <Assignments/>
+                        element: <Assignments />
+                  },
+                  {
+                        path: 'assignment-details/:id',
+                        element: <PriveteRoute>
+                              <AssignmentDetails />
+                        </PriveteRoute> ,
+                        loader : ({params})=> fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
+                        
                   }
             ]
       }
