@@ -1,23 +1,50 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { LuEye, LuEyeClosed } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../../context/Authprovider";
 
 
 const Register = () => {
-       const [sowPass, setSowPass] = useState(false)
+      const {state} = useLocation()
+      const [sowPass, setSowPass] = useState(false)
+      const { emailRegister, updateUserProfile, setUser ,user} = useContext(AuthContext)
+
+      const handleRegister = e => {
+            e.preventDefault()
+            const form = e.target
+            const email = form.email.value
+            const password = form.password.value
+            const name = form.name.value
+            const photo = form.image.value
+
+            emailRegister(email, password)
+                  .then(() => {
+                        updateUserProfile({
+                              displayName: name,
+                              photoURL: photo
+                        })
+                        setUser({
+                              displayName: name,
+                              photoURL: photo
+                        })
+                  })
+      }
+      if(user) {
+            return <Navigate to={state||'/'}/>
+      }
       return (
             <div>
-                   <div className=" h-[90vh]  flex items-center justify-center">
-                   <div className=" w-3/12 hidden lg:flex">
+                  <div className=" h-[90vh]  flex items-center justify-center">
+                        <div className=" w-3/12 hidden lg:flex">
                               <img src="https://i.ibb.co/tsWf9d0/rb-2150292676.png" alt="" />
                         </div>
                         <div className="w-64 md:w-96 shadow-primary-color2 p-7 rounded-md shadow-md">
-                              <form action="" className=" space-y-3 w-full ">
+                              <form onSubmit={handleRegister} action="" className=" space-y-3 w-full ">
                                     <label className=" flex flex-col " htmlFor="">
                                           Full name
                                           <input
-                                                className=" rounded input focus:outline-none border-primary-color" type="email"
+                                                className=" rounded input focus:outline-none border-primary-color" type="text"
                                                 name="name"
                                                 id=""
                                                 placeholder="Enter full name"
@@ -35,7 +62,7 @@ const Register = () => {
                                     <label className=" flex flex-col " htmlFor="">
                                           Photo URL
                                           <input
-                                                className=" rounded input focus:outline-none border-primary-color" type="email"
+                                                className=" rounded input focus:outline-none border-primary-color" type="url"
                                                 name="image"
                                                 id=""
                                                 placeholder="Enter photo URL"
@@ -43,7 +70,7 @@ const Register = () => {
                                     </label>
                                     <label className=" flex flex-col  relative select-none" htmlFor="" >
                                           <div
-                                               onClick={()=>setSowPass(!sowPass)}
+                                                onClick={() => setSowPass(!sowPass)}
                                                 className=" absolute right-3  top-10 cursor-pointer text-xl text-primary-color"
                                           >
                                                 {
@@ -54,17 +81,17 @@ const Register = () => {
                                           Password
                                           <input
                                                 className=" rounded input focus:outline-none border-primary-color" type={sowPass ? 'text' : 'password'}
-                                                name="email"
+                                                name="password"
                                                 id=""
                                                 placeholder="Enter password"
                                           />
                                     </label>
                                     <button className=" btn bg-primary-color text-white hover:bg-primary-color w-full">Create account</button>
-                                    
+
                               </form>
-                                     <div className="divider"></div>
-                                     
-                                     <p className=" text-center mt-2">{`already have an account?`} <Link className="text-primary-color" to='/login'>Login</Link></p>
+                              <div className="divider"></div>
+
+                              <p className=" text-center mt-2">{`already have an account?`} <Link className="text-primary-color" to='/login'>Login</Link></p>
                         </div>
                   </div>
             </div>
