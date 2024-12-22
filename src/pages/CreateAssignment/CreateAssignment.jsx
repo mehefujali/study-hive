@@ -1,11 +1,14 @@
+import axios from "axios";
+import { format } from "date-fns";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
+import Swal from "sweetalert2";
 
 const CreateAssignment = () => {
       const [startDate, setStartDate] = useState(new Date());
-      console.log(startDate)
-
+     const date =  format(new Date(startDate), "dd/MM/yyyy");
+     
       const handleCreateAssignment = (e) => {
             e.preventDefault()
             const form = e.target 
@@ -13,7 +16,28 @@ const CreateAssignment = () => {
             const description = form.description.value 
             const marks = form.marks.value 
             const thumbnail = form.image.value 
-            const 
+            const difficulty = form.difficulty.value
+
+            const newAssignment = {
+                  title ,
+                  description ,
+                  marks ,
+                  thumbnail ,
+                  difficulty,
+                  date
+            }
+
+            axios.post (`${import.meta.env.VITE_backend_URL}/assignments` , newAssignment)
+            .then(res => {
+                  if (res.data.insertedId){
+                        Swal.fire({
+                              title: "Assignment created",
+                              icon: "success",
+                              draggable: true
+                            });
+                  }
+            })
+            
       }
       return (
             <div className="min-h-[90vh]">
@@ -73,7 +97,7 @@ const CreateAssignment = () => {
 
 
                                           Assignment difficulty
-                                          <select className="  select rounded  focus:outline-none border-primary-color " name="" id="">
+                                          <select  className="  select rounded  focus:outline-none border-primary-color " name="difficulty" id="">
                                                 <option value="Easy">Easy</option>
                                                 <option value="Medium">Medium</option>
                                                 <option value="Hard">Hard</option>
