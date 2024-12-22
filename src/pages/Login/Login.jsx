@@ -6,21 +6,25 @@ import { AuthContext } from "../../context/Authprovider";
 import { Link, Navigate, useLocation } from "react-router-dom";
 
 const Login = () => {
-      const {state} = useLocation()
+      const { state } = useLocation()
       const [sowPass, setSowPass] = useState(false)
-      const {user ,googleSignIn} = useContext(AuthContext)
-      const handleGoogleLogin = ()=>{
+      const { user, googleSignIn } = useContext(AuthContext)
+      const handleGoogleLogin = () => {
             googleSignIn()
-            .then(data => {
-                  console.log(data.user)
-            })
+                  .then(data => {
+                        console.log(data.user)
+                  })
       }
-      if(user) {
-            return <Navigate to={state||'/'}></Navigate>
+      if (user) {
+            return <Navigate to={state || '/'}></Navigate>
       }
       return (
             <div>
+
                   <div className=" h-[90vh]  flex items-center justify-center">
+                        <div className=" w-3/12 hidden lg:flex">
+                              <img src="https://i.ibb.co/kSdrwKb/rb-2150316925.png" alt="" />
+                        </div>
                         <div className="w-64 md:w-96 shadow-primary-color2 p-7 rounded-md shadow-md">
                               <form action="" className=" space-y-3 w-full ">
                                     <label className=" flex flex-col " htmlFor="">
@@ -34,7 +38,7 @@ const Login = () => {
                                     </label>
                                     <label className=" flex flex-col  relative select-none" htmlFor="" >
                                           <div
-                                               onClick={()=>setSowPass(!sowPass)}
+                                                onClick={() => setSowPass(!sowPass)}
                                                 className=" absolute right-3  top-10 cursor-pointer text-xl text-primary-color"
                                           >
                                                 {
@@ -51,12 +55,13 @@ const Login = () => {
                                           />
                                     </label>
                                     <button className=" btn bg-primary-color hover:bg-primary-color w-full">Login</button>
-                                    
+
                               </form>
-                                     <div className="divider">OR</div>
-                                     <button onClick={handleGoogleLogin} className=" btn bg-transparent border w-full"><FcGoogle className=" text-3xl" />Continue with google</button>
-                                     <p className=" text-center mt-2">{`don't have an account?`} <Link className="text-primary-color" to='/register'>Register</Link></p>
+                              <div className="divider">OR</div>
+                              <button onClick={handleGoogleLogin} className=" text-xs md:text-sm btn bg-transparent border w-full"><FcGoogle className=" md:text-3xl " />Continue with google</button>
+                              <p className=" text-center mt-2">{`don't have an account?`} <Link className="text-primary-color" to='/register'>Register</Link></p>
                         </div>
+
                   </div>
             </div>
       );

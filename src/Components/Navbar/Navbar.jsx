@@ -40,7 +40,7 @@ const Navbar = () => {
             });
       }
       return (
-            <div  className={pathname === "/"&&" absolute top-0  z-50 w-full "}>
+            <div  className={`${pathname === '/' &&  "absolute top-0  z-50 w-full"}`}>
                   <div className=" ">
                         <div className="navbar md:w-11/12 mx-auto">
                               <div className="navbar-start">
