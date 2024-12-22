@@ -9,6 +9,9 @@ const Register = () => {
       return (
             <div>
                    <div className=" h-[90vh]  flex items-center justify-center">
+                   <div className=" w-3/12 hidden lg:flex">
+                              <img src="https://i.ibb.co/tsWf9d0/rb-2150292676.png" alt="" />
+                        </div>
                         <div className="w-64 md:w-96 shadow-primary-color2 p-7 rounded-md shadow-md">
                               <form action="" className=" space-y-3 w-full ">
                                     <label className=" flex flex-col " htmlFor="">
@@ -56,7 +59,7 @@ const Register = () => {
                                                 placeholder="Enter password"
                                           />
                                     </label>
-                                    <button className=" btn bg-primary-color hover:bg-primary-color w-full">Create account</button>
+                                    <button className=" btn bg-primary-color text-white hover:bg-primary-color w-full">Create account</button>
                                     
                               </form>
                                      <div className="divider"></div>
