@@ -4,16 +4,30 @@ import { FcGoogle } from "react-icons/fc";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { AuthContext } from "../../context/Authprovider";
 import { Link, Navigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
       const { state } = useLocation()
       const [sowPass, setSowPass] = useState(false)
-      const { user, googleSignIn } = useContext(AuthContext)
+      const { user, googleSignIn,signInUser } = useContext(AuthContext)
       const handleGoogleLogin = () => {
             googleSignIn()
                   .then(data => {
                         console.log(data.user)
                   })
+      }
+      const handleSignIn = (e) => {
+          e.preventDefault()
+          const form = e.target 
+          const email = form.email.value 
+          const password = form.password.value
+          signInUser(email,password)
+          .then(()=>{
+             toast.success('You have successfully signed in')
+          })
+          .catch(() => {
+            toast.error('Invalid Email or Password !')
+          })
       }
       if (user) {
             return <Navigate to={state || '/'}></Navigate>
@@ -26,7 +40,7 @@ const Login = () => {
                               <img src="https://i.ibb.co/kSdrwKb/rb-2150316925.png" alt="" />
                         </div>
                         <div className="w-64 md:w-96 shadow-primary-color2 p-7 rounded-md shadow-md">
-                              <form action="" className=" space-y-3 w-full ">
+                              <form onSubmit={handleSignIn} className=" space-y-3 w-full ">
                                     <label className=" flex flex-col " htmlFor="">
                                           Email
                                           <input
@@ -49,7 +63,7 @@ const Login = () => {
                                           Password
                                           <input
                                                 className=" rounded input focus:outline-none border-primary-color" type={sowPass ? 'text' : 'password'}
-                                                name="email"
+                                                name="password"
                                                 id=""
                                                 placeholder="Enter password"
                                           />
