@@ -20,7 +20,7 @@ const Navbar = () => {
                   text: "Are you sure you want to sign out?",
                   icon: "warning",
                   showCancelButton: true,
-                  confirmButtonColor: "#ff0000",
+                  confirmButtonColor: "#fa4b4b",
                   cancelButtonColor: "#00BCD4",
                   confirmButtonText: "Sign Out",
                   customClass: "shadow-md shadow-primary-color2 rounded-lg"

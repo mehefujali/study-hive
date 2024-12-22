@@ -17,7 +17,7 @@ const Root = () => {
                   <main className=" min-h-[90vh]">
                         <Outlet></Outlet>
                   </main>
-                  <footer>
+                  <footer className=" mt-12">
                         <Footer></Footer>
                   </footer>
             </div>
