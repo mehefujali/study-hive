@@ -51,7 +51,7 @@ const Navbar = () => {
                                           <ul
                                                 tabIndex={0}
                                                 className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-2 shadow">
-                                                <NavLink>Assignments</NavLink>
+                                                <NavLink to="/assignments">Assignments</NavLink>
                                                 {
                                                       user && <NavLink>Pending Assignments</NavLink>
                                                 }
@@ -72,7 +72,7 @@ const Navbar = () => {
                               <div className="navbar-end">
                                     <div className="hidden lg:flex mr-8">
                                           <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-gray-500  text-[16px]">
-                                                <NavLink>Assignments</NavLink>
+                                                <NavLink to="/assignments">Assignments</NavLink>
                                                 {
                                                       user && <NavLink>Pending Assignments</NavLink>
                                                 }
