@@ -4,7 +4,7 @@ import './hero.css'
 import { FaPeopleGroup } from 'react-icons/fa6';
 const Hero = () => {
       return (
-            <div className=' relative hero-bg pt-24'>
+            <div className=' relative hero-bg  pt-24'>
 
                   <div className="container relative w-11/12 mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
                         <img
