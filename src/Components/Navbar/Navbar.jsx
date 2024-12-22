@@ -106,9 +106,9 @@ const Navbar = () => {
                                                       </div>
                                                       <ul
                                                             tabIndex={0}
-                                                            className="menu menu-sm dropdown-content rounded text-gray-500 w-fit  z-[1] mt-3 p-4 shadow-md shadow-primary-color2 font-semibold space-y-2 bg-white">
+                                                            className="menu menu-sm dropdown-content rounded text-gray-500 w-fit  z-[1] mt-3 p-4 shadow-md shadow-primary-color2 font-semibold space-y-4 bg-white">
 
-                                                            <Link className=" flex gap-1 text-center"><MdAssignmentAdd className=" text-xl" /> CreateAssignments</Link>
+                                                            <Link to="/create-assignment" className=" flex gap-1 text-center"><MdAssignmentAdd className=" text-xl" /> CreateAssignments</Link>
                                                             <Link className=" flex gap-1 text-center"><MdOutlineAssignmentInd className=" text-xl" /> MyAttemptedAssignments</Link>
                                                             <div className="divider my-0"></div>
                                                             <button onClick={handleSignOut} className=" btn btn-xs border flex gap-1 rounded items-center">

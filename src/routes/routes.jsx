@@ -3,6 +3,8 @@ import Root from "../pages/Root/Root";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PriveteRoute from "../Private/PriveteRoute";
+import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 
 const routes = createBrowserRouter([
       {
@@ -20,6 +22,12 @@ const routes = createBrowserRouter([
                   {
                         path: 'register' ,
                         element: <Register/>
+                  },
+                  {
+                        path : 'create-assignment' ,
+                        element : <PriveteRoute>
+                              <CreateAssignment/>
+                        </PriveteRoute>
                   }
             ]
       }
