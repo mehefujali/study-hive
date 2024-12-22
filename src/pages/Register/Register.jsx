@@ -3,12 +3,13 @@ import { useContext, useState } from "react";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/Authprovider";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
-      const {state} = useLocation()
+      const { state } = useLocation()
       const [sowPass, setSowPass] = useState(false)
-      const { emailRegister, updateUserProfile, setUser ,user} = useContext(AuthContext)
+      const { emailRegister, updateUserProfile, setUser, user } = useContext(AuthContext)
 
       const handleRegister = e => {
             e.preventDefault()
@@ -17,6 +18,23 @@ const Register = () => {
             const password = form.password.value
             const name = form.name.value
             const photo = form.image.value
+            const hasUppercase = /[A-Z]/.test(password);
+            
+            if (password.length < 6) {
+                  toast.error('Password must be at least 6 characters long.')
+                  return
+            }
+            if (!hasUppercase) {
+                  toast.error("Password must contain at least one uppercase letter.")
+                  return
+            }
+            const hasLowercase = /[a-z]/.test(password);
+            if (!hasLowercase) {
+                  toast.error('Password must contain at least one lowercase letter.')
+                  return
+            }
+            
+
 
             emailRegister(email, password)
                   .then(() => {
@@ -28,10 +46,16 @@ const Register = () => {
                               displayName: name,
                               photoURL: photo
                         })
+
+                        toast.success(' Account Created Successfully! ')
+
+                  })
+                  .catch(() => {
+                        toast.error('Account Creation Failed')
                   })
       }
-      if(user) {
-            return <Navigate to={state||'/'}/>
+      if (user) {
+            return <Navigate to={state || '/'} />
       }
       return (
             <div>
