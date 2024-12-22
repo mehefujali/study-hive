@@ -70,6 +70,8 @@ const Register = () => {
                               <img src="https://i.ibb.co/tsWf9d0/rb-2150292676.png" alt="" />
                         </div>
                         <div className="w-64 md:w-96 shadow-primary-color2 p-7 rounded-md shadow-md">
+                                 <h1 className=" text-xl md:text-3xl font-bold  text-center">Create account</h1>
+                                 <div className="divider"></div>
                               <form onSubmit={handleRegister} action="" className=" space-y-3 w-full ">
                                     <label className=" flex flex-col " htmlFor="">
                                           Full name
