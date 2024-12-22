@@ -2,10 +2,14 @@ import { useContext } from "react";
 import { AuthContext } from "../context/Authprovider";
 import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
+import Loder from "../Components/Loder/Loder";
 
 
 const PriveteRoute = ({children}) => {
-      const {user} = useContext(AuthContext)
+      const {user , loding} = useContext(AuthContext)
+      if(loding) {
+            return <Loder/>
+      }
       if(user){
             return children
       }

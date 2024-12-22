@@ -5,6 +5,7 @@ import { auth } from "../firebase/firebase.config";
 const AuthContext = createContext()
 const Authprovider = ({ children }) => {
       const [user, setUser] = useState(null)
+      const [loding, setLoding] = useState(true)
       const googleProvider = new GoogleAuthProvider()
       const googleSignIn = () => {
             return signInWithPopup(auth, googleProvider)
@@ -12,19 +13,20 @@ const Authprovider = ({ children }) => {
       const signOutUser = () => {
             return signOut(auth)
       }
-      const emailRegister = (email,password) => {
-            return  createUserWithEmailAndPassword(auth,email,password)
+      const emailRegister = (email, password) => {
+            return createUserWithEmailAndPassword(auth, email, password)
       }
       const updateUserProfile = upadate => {
-            return updateProfile(auth.currentUser ,upadate)
+            return updateProfile(auth.currentUser, upadate)
       }
-      const signInUser = (email , password) => {
-            return signInWithEmailAndPassword(auth , email ,password)
+      const signInUser = (email, password) => {
+            return signInWithEmailAndPassword(auth, email, password)
 
       }
       useEffect(() => {
             const unSubscribe = onAuthStateChanged(auth, (cureentUser) => {
                   setUser(cureentUser)
+                  setLoding(false)
             })
 
             return () => {
@@ -40,6 +42,7 @@ const Authprovider = ({ children }) => {
             emailRegister,
             updateUserProfile,
             signInUser,
+            loding,
 
       }
 
