@@ -12,8 +12,8 @@ const Login = () => {
       const { user, googleSignIn,signInUser } = useContext(AuthContext)
       const handleGoogleLogin = () => {
             googleSignIn()
-                  .then(data => {
-                        console.log(data.user)
+                  .then(() => {
+                        toast.success('You have successfully signed in')
                   })
       }
       const handleSignIn = (e) => {
@@ -43,7 +43,7 @@ const Login = () => {
                               <form onSubmit={handleSignIn} className=" space-y-3 w-full ">
                                     <label className=" flex flex-col " htmlFor="">
                                           Email
-                                          <input
+                                          <input required
                                                 className=" rounded input focus:outline-none border-primary-color" type="email"
                                                 name="email"
                                                 id=""
@@ -62,6 +62,7 @@ const Login = () => {
 
                                           Password
                                           <input
+                                          required
                                                 className=" rounded input focus:outline-none border-primary-color" type={sowPass ? 'text' : 'password'}
                                                 name="password"
                                                 id=""

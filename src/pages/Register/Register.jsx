@@ -19,7 +19,7 @@ const Register = () => {
             const name = form.name.value
             const photo = form.image.value
             const hasUppercase = /[A-Z]/.test(password);
-            
+
             if (password.length < 6) {
                   toast.error('Password must be at least 6 characters long.')
                   return
@@ -33,7 +33,7 @@ const Register = () => {
                   toast.error('Password must contain at least one lowercase letter.')
                   return
             }
-            
+
 
 
             emailRegister(email, password)
@@ -50,8 +50,14 @@ const Register = () => {
                         toast.success(' Account Created Successfully! ')
 
                   })
-                  .catch(() => {
-                        toast.error('Account Creation Failed')
+                  .catch((err) => {
+                        if (err.message === "Firebase: Error (auth/email-already-in-use).") {
+                              toast.error('Email already in use')
+                        }
+
+                        else {
+                              toast.error('Account Creation Failed')
+                        }
                   })
       }
       if (user) {
@@ -68,6 +74,7 @@ const Register = () => {
                                     <label className=" flex flex-col " htmlFor="">
                                           Full name
                                           <input
+                                                required
                                                 className=" rounded input focus:outline-none border-primary-color" type="text"
                                                 name="name"
                                                 id=""
@@ -77,6 +84,7 @@ const Register = () => {
                                     <label className=" flex flex-col " htmlFor="">
                                           Email
                                           <input
+                                                required
                                                 className=" rounded input focus:outline-none border-primary-color" type="email"
                                                 name="email"
                                                 id=""
@@ -86,6 +94,7 @@ const Register = () => {
                                     <label className=" flex flex-col " htmlFor="">
                                           Photo URL
                                           <input
+                                                required
                                                 className=" rounded input focus:outline-none border-primary-color" type="url"
                                                 name="image"
                                                 id=""
@@ -104,6 +113,7 @@ const Register = () => {
 
                                           Password
                                           <input
+                                                required
                                                 className=" rounded input focus:outline-none border-primary-color" type={sowPass ? 'text' : 'password'}
                                                 name="password"
                                                 id=""
