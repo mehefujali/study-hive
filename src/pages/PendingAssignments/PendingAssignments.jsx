@@ -6,8 +6,8 @@ import { AuthContext } from "../../context/Authprovider";
 
 const PendingAssignments = () => {
       const [assignments, setAssignments] = useState([])
-      const {user} = useContext(AuthContext)
-      const [signal , setSignal] = useState(null)
+      const { user } = useContext(AuthContext)
+      const [signal, setSignal] = useState(null)
       useEffect(() => {
             axios.get(`${import.meta.env.VITE_backend_URL}/pending-assignments`)
                   .then(res => {
@@ -16,8 +16,18 @@ const PendingAssignments = () => {
       }, [signal])
       const handleGiveMarks = async (assignment) => {
 
- 
 
+            if (user.email === assignment.email) {
+                  Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Opps!",
+                        text: "You cannot grade your own assignment!",
+                        showConfirmButton: false,
+                        timer: 1500
+                  });
+                  return
+            }
 
             Swal.fire({
                   title: 'Give Assignments marks',
@@ -54,7 +64,7 @@ const PendingAssignments = () => {
                   showCancelButton: true,
                   confirmButtonText: 'Submit',
                   confirmButtonColor: '#00BCD4',
-                  
+
                   preConfirm: () => {
                         const marks = document.getElementById('swal-marks').value;
                         const feedback = document.getElementById('swal-feedback').value;
@@ -70,36 +80,36 @@ const PendingAssignments = () => {
                         if (parseFloat(marks) > assignment.marks) {
                               Swal.showValidationMessage(`Please enter a valid mark between 0 and ${assignment.marks}.`);
                         }
-                         return {marks,feedback, email: user.email}
+                        return { marks, feedback, email: user.email }
                   }
             }).then((result) => {
                   if (result.isConfirmed) {
                         axios.put(`${import.meta.env.VITE_backend_URL}/submit-assignment/${assignment._id}`, result.value)
                               .then(res => {
 
-                                   
+
                                     if (res.data.modifiedCount) {
                                           Swal.fire({
                                                 title: "Good job!",
                                                 text: "Assignment marked successfully! ",
-                                                icon: "success" ,
+                                                icon: "success",
                                                 confirmButtonColor: '#00BCD4'
                                           });
 
-                                         
+
                                     }
 
-                                       if(res.data.message === "this is your assignment"){
+                                    if (res.data.message === "this is your assignment") {
                                           Swal.fire({
                                                 title: "Opps!",
                                                 text: "You cannot grade your own assignment!",
                                                 icon: "error",
                                                 confirmButtonColor: '#00BCD4'
                                           });
-                                       }
+                                    }
 
-                                       setSignal(Math.random())
-                              }) 
+                                    setSignal(Math.random())
+                              })
                   }
             });
 
