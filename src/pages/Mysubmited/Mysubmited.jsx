@@ -2,14 +2,18 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/Authprovider";
 import SubmitedAssignmentCard from "../../Components/SubmitedAssignmentCard/SubmitedAssignmentCard";
+import Loder from "../../Components/Loder/Loder";
 
 const Mysubmited = () => {
       const { user } = useContext(AuthContext)
+      const [loding , setLoding ] = useState(false)
       const [assignments,setAssignments] = useState([])
       useEffect(() => {
+            setLoding(true)
             axios.get(`${import.meta.env.VITE_backend_URL}/my-submited-assignment?email=${user.email}`)
             .then(res=>{
                   setAssignments(res.data)
+                  setLoding(false)
             })
       }, [user.email])
       console.log(assignments)
@@ -24,8 +28,14 @@ const Mysubmited = () => {
                                     <p className="w-11/12 mx-auto  md:w-5/12 text-gray-500">Review all the assignments you have submitted so far. Track your progress, view grades, and check feedback from your peers. Stay organized and improve with each submission.</p>
                               </div>
                               <div className="divider"></div>
-                              <div className=" flex gap-4 flex-wrap items-center justify-center  sm:items-start sm:justify-start w-11/12 mx-auto">
-                                    {
+                              {
+                                    loding ? <div>
+                                         <Loder></Loder> 
+                                    </div> : <div className=" flex gap-4 flex-wrap items-center justify-center  sm:items-start sm:justify-start w-11/12 md:w-full mx-auto">
+                                    { assignments.length < 1 ? <div className=" w-fit flex items-center  flex-col gap-2 mx-auto mt-10 md:mt-20">
+                                           <img className=" w-24 opacity-45" src="https://cdn-icons-png.flaticon.com/512/5842/5842026.png" alt="" />
+                                          <h1 className=" text-3xl font-light text-gray-500"> No data available </h1>
+                                    </div> :
                                       assignments.map(assignment => <SubmitedAssignmentCard 
                                       key={assignment._id}
                                       assignment={assignment}
@@ -33,6 +43,7 @@ const Mysubmited = () => {
                                       ></SubmitedAssignmentCard> )
                                     }
                               </div>
+                              }
                         </div>
                   </div>
             </div>
