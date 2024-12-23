@@ -12,7 +12,7 @@ const AssignmentDetails = () => {
       
       const handleTakeAssignment = async () => {
 
-
+            
 
 
             Swal.fire({

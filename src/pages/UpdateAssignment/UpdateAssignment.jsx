@@ -2,7 +2,9 @@ import DatePicker from "react-datepicker";
 import { AuthContext } from "../../context/Authprovider";
 import { useContext, useState } from "react";
 import { format } from "date-fns";
-import { ScrollRestoration, useLoaderData, useParams } from "react-router-dom";
+import { ScrollRestoration, useLoaderData } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const UpdateAssignment = () => {
@@ -10,6 +12,39 @@ const UpdateAssignment = () => {
       const [startDate, setStartDate] = useState(new Date());
       const date = format(new Date(startDate), "dd/MM/yyyy");
       const { user } = useContext(AuthContext)
+      const handleUpdateAssignment = (e) => {
+            e.preventDefault()
+            const form = e.target
+            const title = form.title.value
+            const description = form.description.value
+            const marks = form.marks.value
+            const thumbnail = form.image.value
+            const difficulty = form.difficulty.value
+
+            const newAssignment = {
+                  title,
+                  description,
+                  marks,
+                  thumbnail,
+                  difficulty,
+                  date,
+                  creatorName: user?.displayName,
+                  creatorEmail: user?.email,
+            }
+            
+            axios.put(`${import.meta.env.VITE_backend_URL}/update-assignment/${assignment._id}`, newAssignment)
+                  .then(res => {
+                        if (res.data.modifiedCount) {
+                              Swal.fire({
+                                    title: "Assignment Updated",
+                                    icon: "success",
+                                    draggable: true
+                              });
+                              
+                        }
+                  })
+
+      }
       
       return (
              <div className="min-h-[90vh]">
@@ -25,7 +60,7 @@ const UpdateAssignment = () => {
             
                                     <div className="w-11/12 mb-16  md:w-9/12 lg:w-7/12 border-primary-color2  border-2  shadow-primary-color2 p-7 rounded-md shadow-md">
             
-                                          <form  action="" className=" space-y-3 gap-6  w-full md:grid grid-cols-12">
+                                          <form onSubmit={handleUpdateAssignment}  action="" className=" space-y-3 gap-6  w-full md:grid grid-cols-12">
                                                 <label className=" flex flex-col mt-3 col-span-6 " htmlFor="">
                                                       Title
                                                       <input 
@@ -91,7 +126,7 @@ const UpdateAssignment = () => {
                                                       className=" rounded input 
                                                       focus:outline-none border-primary-color box-border w-full "
             
-                                                            selected={assignment.date}
+                                                             selected={new Date(assignment.date.split('/').reverse().join('-'))}
                                                             onChange={(date) => setStartDate(date)}
                                                             minDate={new Date()}
                                                       />

@@ -17,5 +17,5 @@ const ThemeProvider = ({children}) => {
 export default ThemeProvider;
 
 ThemeProvider.propTypes ={
-      children:PropTypes.object.isre
+      children:PropTypes.object.isRequired
 }
