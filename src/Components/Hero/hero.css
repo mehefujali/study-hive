@@ -2,6 +2,12 @@
       background-image: url(https://img.freepik.com/free-photo/watercolor-paper-texture_1194-6496.jpg?t=st=1734847894~exp=1734851494~hmac=5371c973d204a1174212bf53e1b2534456349c294ab3503fc4a3b862a91e6638&w=996);
       background-size: cover;
 }
+.hero-bg-dark {
+      background-image: url(https://i.ibb.co/BCQsmC7/image.png);
+      background-size: cover;
+      
+      
+}
 .img-bg{
       background-image: url(https://i.ibb.co/YLFWQqz/victor.png );
       background-size: cover;

@@ -29,7 +29,7 @@ const PendingAssignments = () => {
         <div class="font-medium text-gray-700 text-start"><p>  <span class="font-bold text-gray-700 text-start">Notes:</span> ${assignment.quicknote}</p></div>
       <label class="flex flex-col gap-3">
         <span className=" divider"></span>
-<span class="font-medium text-gray-700 text-start"> Marks :</span>
+<span class="font-medium text-gray-700 text-start"> Marks (Highest: ${assignment.marks}):</span>
         <input
           required
           id="swal-marks"
@@ -58,11 +58,16 @@ const PendingAssignments = () => {
                         const marks = document.getElementById('swal-marks').value;
                         const feedback = document.getElementById('swal-feedback').value;
 
+
+
                         if (!feedback) {
-                              Swal.showValidationMessage('Please enter  feedback');
+                              Swal.showValidationMessage('Please add  feedback');
                         }
                         if (!marks) {
                               Swal.showValidationMessage('Please enter Marks');
+                        }
+                        if (parseFloat(marks) > assignment.marks) {
+                              Swal.showValidationMessage(`Please enter a valid mark between 0 and ${assignment.marks}.`);
                         }
                          return {marks,feedback, email: user.email}
                   }
@@ -107,7 +112,7 @@ const PendingAssignments = () => {
                               <h1
                                     className=" text-xl md:text-2xl lg:text-3xl font-bold  "
                               >Pending Assignments</h1>
-                              <p className="w-11/12 mx-auto  md:w-5/12 text-gray-500">Stay on top of your tasks with a clear view of all your pending assignments. Complete them before the deadline to ensure consistent progress and collaboration with your peers.</p>
+                              <p className="w-11/12 mx-auto  md:w-5/12 text-gray-500 dark:text-white">Stay on top of your tasks with a clear view of all your pending assignments. Complete them before the deadline to ensure consistent progress and collaboration with your peers.</p>
                         </div>
                         <div className="divider"></div>
                         <div>

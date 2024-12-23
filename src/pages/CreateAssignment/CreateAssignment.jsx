@@ -49,7 +49,7 @@ const CreateAssignment = () => {
                         <h1
                               className=" text-xl md:text-2xl lg:text-3xl font-bold  "
                         >Create a New Assignment</h1>
-                        <p className="w-11/12 mx-auto  md:w-5/12 text-gray-500">Use this page to create assignments for all users. Fill in the required details, including title, description, marks, and due date, to make your assignment live. Assignments can be categorized by difficulty level to suit your needs.</p>
+                        <p className="w-11/12 mx-auto  md:w-5/12 text-gray-500 dark:text-white">Use this page to create assignments for all users. Fill in the required details, including title, description, marks, and due date, to make your assignment live. Assignments can be categorized by difficulty level to suit your needs.</p>
                   </div>
                   <div className=" h-full mt-10  flex items-center justify-center">
 

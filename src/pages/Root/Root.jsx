@@ -2,11 +2,19 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
 import Footer from "../../Components/Footer/Footer";
+import { useContext, useEffect } from "react";
+import { themeContext } from "../../context/ThemeProvider";
 
 
 const Root = () => {
+      const {theme} = useContext(themeContext)
+
+      // Update the theme on the HTML tag
+      useEffect(() => {
+            document.documentElement.setAttribute('data-theme', theme);
+      }, [theme]);
       return (
-            <div>
+            <div className=" dark:text-white">
                   <Toaster
                         position="top-center"
                         reverseOrder={false}

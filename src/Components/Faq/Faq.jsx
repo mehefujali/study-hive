@@ -8,7 +8,7 @@ const Faq = () => {
                                     <h1
                                           className=" text-xl md:text-2xl lg:text-3xl font-bold  "
                                     >Frequently Asked Questions</h1>
-                                    <p className="w-11/12 mx-auto  md:w-5/12 text-gray-500">Got questions about how our platform works? Here are some of the most common questions we receive about StudyMate and their answers. If you have more queries, feel free to contact us!</p>
+                                    <p className="w-11/12 mx-auto  md:w-5/12 text-gray-500 dark:text-white">Got questions about how our platform works? Here are some of the most common questions we receive about StudyMate and their answers. If you have more queries, feel free to contact us!</p>
                               </div>
                         </div>
                         <div className=" flex flex-col md:flex-row mt-16 w-11/12 mx-auto gap-6 justify-between items-center">

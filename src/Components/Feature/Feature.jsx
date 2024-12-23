@@ -6,7 +6,7 @@ const Feature = () => {
                   <div className="container mx-auto w-11/12 ">
                         <div className=" ">
                               <h1 className=" text-xl md:text-2xl lg:text-3xl font-bold divider divider-start">Key Features of Study Hive </h1>
-                              <p className="w-11/12  md:w-5/12 text-gray-500">Discover the powerful features of Study Hive that make learning together more effective and enjoyable. From collaborative assignments to real-time feedback, our platform is designed to enhance your study experience.</p>
+                              <p className="w-11/12  md:w-5/12 text-gray-500 dark:text-white">Discover the powerful features of Study Hive that make learning together more effective and enjoyable. From collaborative assignments to real-time feedback, our platform is designed to enhance your study experience.</p>
                         </div>
                         <div className=" mt-20 flex flex-wrap  gap-8 w-11/12 mx-auto justify-center items-center">
                               <div className=" hover:scale-105 duration-200 ease-in-out text-center shadow-md p-4 rounded-md w-60 h-full flex flex-col justify-between gap-2">
