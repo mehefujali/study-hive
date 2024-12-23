@@ -16,8 +16,14 @@ const Assignments = () => {
       
       const handleFilterAssignments = (e) => {
             const filter = e.target.value 
-            console.log(filter)
+           
             axios.get(`${import.meta.env.VITE_backend_URL}/filter-assignments?filter=${filter}`)
+                  .then(res => setAssignments(res.data))
+      }
+      const  handleSearchAssignments = (e) => {
+            const search = e.target.value 
+            
+            axios.get(`${import.meta.env.VITE_backend_URL}/filter-assignments?search=${search}`)
                   .then(res => setAssignments(res.data))
       }
       
@@ -34,8 +40,8 @@ const Assignments = () => {
 
 
                                                 <label htmlFor="" className=" relative">
-                                                      <AiOutlineFileSearch className=" text-xl absolute top-3 right-3 z-10" />
-                                                      <input name="search" placeholder="Search assignments..." type="text" className="input  input-md  focus:border-none focus:outline-none w-fit rounded border-primary-color join-item  px-10" />
+                                                      <AiOutlineFileSearch className=" text-xl absolute top-[14px] right-3 z-10" />
+                                                      <input onChange={handleSearchAssignments} name="search" placeholder="Search assignments..." type="search" className="input    focus:border-none focus:outline-none w-fit rounded-md border-primary-color   pr-10" />
                                                 </label>
 
                                           </form>
