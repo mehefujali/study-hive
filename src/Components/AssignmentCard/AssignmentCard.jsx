@@ -7,11 +7,23 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { signalContext } from "../../context/SignalProvider";
+import { AuthContext } from "../../context/Authprovider";
 
 
 const AssignmentCard = ({ assignment }) => {
       const {setSignal} = useContext(signalContext)
+      const {user} = useContext(AuthContext)
       const handleDeleteAssignMent = () => {
+            if(user.email !== assignment.creatorEmail){
+                  Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "You can't delete other person's assignment",
+                        showConfirmButton: false,
+                        timer: 1500
+                  });
+                  return
+            }
             Swal.fire({
 
 
