@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext } from "react";
-import { ScrollRestoration, useLoaderData } from "react-router-dom";
+import { ScrollRestoration, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/Authprovider";
 
@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/Authprovider";
 const AssignmentDetails = () => {
       const assignment = useLoaderData()
       const {user} = useContext(AuthContext)
+      const navigate = useNavigate()
       
       const handleTakeAssignment = async () => {
 
@@ -56,7 +57,7 @@ const AssignmentDetails = () => {
                         if (!googleDocsLink  ) {
                               Swal.showValidationMessage('Please enter google docs link');
                         }
-                        return {googleDocsLink,quicknote , user : user.displayName , email : user.email , assignmentId : assignment._id , status: 'pending'}
+                        return {googleDocsLink,quicknote , user : user.displayName , email:user.email , assignmentId : assignment._id , status: 'pending'}
                   }
             }).then((result) => {
                   if (result.isConfirmed) {
@@ -68,6 +69,8 @@ const AssignmentDetails = () => {
                                           text: "Assignment submitted successfully ",
                                           icon: "success"
                                         });
+
+                                        navigate('/my-submited-assignment')
                               }
 
 

@@ -53,7 +53,7 @@ const Navbar = () => {
                                                 className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-2 shadow">
                                                 <NavLink to="/assignments">Assignments</NavLink>
                                                 {
-                                                      user && <NavLink>Pending Assignments</NavLink>
+                                                      user && <NavLink to='/pending-assignments'>Pending Assignments</NavLink>
                                                 }
                                           </ul>
                                     </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
                                           <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-gray-500  text-[16px]">
                                                 <NavLink to="/assignments">Assignments</NavLink>
                                                 {
-                                                      user && <NavLink>Pending Assignments</NavLink>
+                                                      user && <NavLink to="/pending-assignments">Pending Assignments</NavLink>
                                                 }
 
                                           </ul>

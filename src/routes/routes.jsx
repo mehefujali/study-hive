@@ -8,6 +8,7 @@ import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 import Assignments from "../pages/Assignments/Assignments";
 import AssignmentDetails from "../pages/AssignmentDetails/AssignmentDetails";
 import Mysubmited from "../pages/Mysubmited/Mysubmited";
+import PendingAssignments from "../pages/PendingAssignments/PendingAssignments";
 
 const routes = createBrowserRouter([
       {
@@ -48,6 +49,12 @@ const routes = createBrowserRouter([
                         path : 'my-submited-assignment' ,
                         element : <PriveteRoute>
                               <Mysubmited/>
+                        </PriveteRoute>
+                  },
+                  {
+                        path : 'pending-assignments' ,
+                        element : <PriveteRoute>
+                              <PendingAssignments/>
                         </PriveteRoute>
                   }
             ]

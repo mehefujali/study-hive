@@ -31,7 +31,7 @@ const Mysubmited = () => {
                               {
                                     loding ? <div>
                                          <Loder></Loder> 
-                                    </div> : <div className=" flex gap-4 flex-wrap items-center justify-center  sm:items-start sm:justify-start w-11/12 md:w-full mx-auto">
+                                    </div> : <div className=" flex flex-col  gap-4  sm:flex-row flex-wrap items-center justify-center   sm:items-start sm:justify-start w-11/12 md:w-full mx-auto">
                                     { assignments.length < 1 ? <div className=" w-fit flex items-center  flex-col gap-2 mx-auto mt-10 md:mt-20">
                                            <img className=" w-24 opacity-45" src="https://cdn-icons-png.flaticon.com/512/5842/5842026.png" alt="" />
                                           <h1 className=" text-3xl font-light text-gray-500"> No data available </h1>
