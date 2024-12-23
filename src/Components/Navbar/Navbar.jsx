@@ -9,6 +9,7 @@ import { GoSignOut } from "react-icons/go";
 import Swal from "sweetalert2";
 import { MdAssignmentAdd, MdDarkMode, MdOutlineAssignmentInd, MdOutlineLightMode } from "react-icons/md";
 import { themeContext } from "../../context/ThemeProvider";
+import './nav.css'
 const Navbar = () => {
       const { user, signOutUser } = useContext(AuthContext)
       const { theme, setTheme } = useContext(themeContext)
@@ -47,7 +48,7 @@ const Navbar = () => {
             setTheme(theme === "dark" ? "light" : "dark");
       };
       return (
-            <div className={`${pathname === '/' && "absolute top-0  z-50 w-full"}`}>
+            <div className={`${pathname === '/' && "absolute top-0  z-50 w-full"} select-none`}>
                   <div className=" ">
                         <div className="navbar md:w-11/12 mx-auto">
                               <div className="navbar-start">
@@ -79,7 +80,7 @@ const Navbar = () => {
                                           </ul>
                                     </div>
                                     <Link to={'/'} className=" flex items-center text-xl md:text-2xl lg:text-3xl font-bold">
-                                          <img className=" w-12 mr-1" src="https://i.ibb.co/FVGx3bB/study-hive-logo.png" alt="" />
+                                          <img className={` w-12 mr-1 ${theme === "dark" && "brand"}`} src="https://i.ibb.co/FVGx3bB/study-hive-logo.png" alt="" />
                                           <div className=" hidden md:block dark:text-white">
                                                 STUDY <span
                                                       className=" text-primary-color animate__animated animate__slideInRight"
@@ -92,7 +93,7 @@ const Navbar = () => {
 
                               <div className="navbar-end">
                                     <div className="hidden lg:flex mr-8">
-                                          <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-gray-500 dark:text-white  text-[16px] dark:text-white">
+                                          <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-gray-500 dark:text-white  text-[16px] ">
                                                 <div
                                                       className="w-fit h-fit cursor-pointer text-black dark:text-white active:scale-90"
                                                       onClick={handleChangeTheme}
@@ -141,7 +142,7 @@ const Navbar = () => {
                                                       </div>
                                                       <ul
                                                             tabIndex={0}
-                                                            className="menu menu-sm dropdown-content rounded text-gray-500 dark:text-white w-fit  z-[1] mt-3 p-4 shadow-md shadow-primary-color2 font-semibold space-y-4 bg-white dark:bg-base-200 dark:text-white">
+                                                            className="menu menu-sm dropdown-content rounded text-gray-500 dark:text-white w-fit  z-[1] mt-3 p-4 shadow-md shadow-primary-color2 font-semibold space-y-4 bg-white dark:bg-base-200 ">
 
                                                             <Link to="/create-assignment" className=" flex gap-1 text-center"><MdAssignmentAdd className=" text-xl" /> CreateAssignments</Link>
                                                             <Link to="/my-submited-assignment" className=" flex gap-1 text-center"><MdOutlineAssignmentInd className=" text-xl" /> MySubmitedAssignments</Link>
