@@ -122,7 +122,7 @@ const PendingAssignments = () => {
                                     <table className="table table-zebra">
                                           {/* head */}
                                           <thead>
-                                                <tr>
+                                                <tr className=" md:text-lg dark:text-white">
                                                       <th></th>
                                                       <th>Assignment</th>
                                                       <th>Marks</th>

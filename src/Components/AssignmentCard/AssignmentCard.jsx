@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const AssignmentCard = ({ assignment }) => {
       return (
             <div >
-                  <div className=" rounded-md overflow-hidden shadow-md">
+                  <div className=" rounded-md overflow-hidden shadow-md dark:shadow-gray-400">
                         <div>
                               <img className=" w-full object-cover h-72" src={assignment.thumbnail} alt="" />
                         </div>
