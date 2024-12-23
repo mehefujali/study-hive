@@ -7,6 +7,7 @@ import PriveteRoute from "../Private/PriveteRoute";
 import CreateAssignment from "../pages/CreateAssignment/CreateAssignment";
 import Assignments from "../pages/Assignments/Assignments";
 import AssignmentDetails from "../pages/AssignmentDetails/AssignmentDetails";
+import Mysubmited from "../pages/Mysubmited/Mysubmited";
 
 const routes = createBrowserRouter([
       {
@@ -42,6 +43,12 @@ const routes = createBrowserRouter([
                         </PriveteRoute> ,
                         loader : ({params})=> fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
                         
+                  },
+                  {
+                        path : 'my-submited-assignment' ,
+                        element : <PriveteRoute>
+                              <Mysubmited/>
+                        </PriveteRoute>
                   }
             ]
       }

@@ -109,7 +109,7 @@ const Navbar = () => {
                                                             className="menu menu-sm dropdown-content rounded text-gray-500 w-fit  z-[1] mt-3 p-4 shadow-md shadow-primary-color2 font-semibold space-y-4 bg-white">
 
                                                             <Link to="/create-assignment" className=" flex gap-1 text-center"><MdAssignmentAdd className=" text-xl" /> CreateAssignments</Link>
-                                                            <Link className=" flex gap-1 text-center"><MdOutlineAssignmentInd className=" text-xl" /> MyAttemptedAssignments</Link>
+                                                            <Link to="/my-submited-assignment" className=" flex gap-1 text-center"><MdOutlineAssignmentInd className=" text-xl" /> MySubmitedAssignments</Link>
                                                             <div className="divider my-0"></div>
                                                             <button onClick={handleSignOut} className=" btn btn-xs border flex gap-1 rounded items-center">
                                                                   <FaSignOutAlt></FaSignOutAlt> Logout </button>
