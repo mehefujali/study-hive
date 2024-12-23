@@ -3,7 +3,7 @@
       background-size: cover;
 }
 .hero-bg-dark {
-      background-image: url(https://i.ibb.co/BCQsmC7/image.png);
+      background-image:linear-gradient(#1d232ace, #1d232ab7), url(https://i.ibb.co/BCQsmC7/image.png);
       background-size: cover;
       
       

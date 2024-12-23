@@ -26,7 +26,7 @@ const AssignmentDetails = () => {
         <input
           required
           id="swal-google-docs"
-          class="rounded-md  border focus:border-primary-color2 border-primary-color input  focus:outline-none "
+          class="rounded-md dark:text-white   border focus:border-primary-color2 border-primary-color input  focus:outline-none "
           type="url"
           placeholder="Enter google docs link"
         />
@@ -35,7 +35,7 @@ const AssignmentDetails = () => {
         <span class="font-medium text-gray-700 text-start">Quick note</span>
         <textarea
           id="quick-note"
-          class="rounded-md  border border-primary-color  textarea resize-none  focus:border-primary-color2  focus:outline-none "
+          class="rounded-md  border border-primary-color  textarea resize-none  focus:border-primary-color2 dark:text-white  focus:outline-none "
           placeholder="quick note"
           rows="4"
         ></textarea>

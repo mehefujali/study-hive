@@ -33,7 +33,7 @@ const PendingAssignments = () => {
         <input
           required
           id="swal-marks"
-          class="rounded-md  border focus:border-primary-color2 border-primary-color input  focus:outline-none "
+          class="rounded-md dark:text-white  border focus:border-primary-color2 border-primary-color input  focus:outline-none "
           type="text"
           placeholder="Enter assignment mark"
         />
@@ -42,7 +42,7 @@ const PendingAssignments = () => {
         <span class="font-medium text-gray-700 text-start">Feedback</span>
         <textarea
           id="swal-feedback"
-          class="rounded-md  border border-primary-color  textarea resize-none  focus:border-primary-color2  focus:outline-none "
+          class="rounded-md dark:text-white border border-primary-color  textarea resize-none  focus:border-primary-color2  focus:outline-none "
           placeholder="feedback"
           rows="4"
         ></textarea>
@@ -54,6 +54,7 @@ const PendingAssignments = () => {
                   showCancelButton: true,
                   confirmButtonText: 'Submit',
                   confirmButtonColor: '#00BCD4',
+                  
                   preConfirm: () => {
                         const marks = document.getElementById('swal-marks').value;
                         const feedback = document.getElementById('swal-feedback').value;

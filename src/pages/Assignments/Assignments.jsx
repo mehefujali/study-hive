@@ -1,16 +1,18 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { ScrollRestoration } from "react-router-dom";
 import './assignments.css'
 import AssignmentCard from "../../Components/AssignmentCard/AssignmentCard";
+import { signalContext } from "../../context/SignalProvider";
 
 const Assignments = () => {
+      const {signal} = useContext(signalContext)
       const [assignments ,setAssignments] = useState([])
       useEffect(() => {
             axios.get(`${import.meta.env.VITE_backend_URL}/assignments`)
                   .then(res => setAssignments(res.data))
-      }, [])
+      }, [signal])
 
       
       return (
@@ -18,7 +20,7 @@ const Assignments = () => {
                   <div>
                         <ScrollRestoration></ScrollRestoration>
                         <div className="container mx-auto w-11/12 xl:w-full">
-                              <div className="flex flex-col justify-center items-center  my-12 text-center select-none  bg-primary-color2 bg-opacity-35 relative  rounded-lg gap-3 bg-no-repeat overflow-hidden shadow-md shadow-primary-color2   bg-contain" id="assignments-banner">
+                              <div className="flex flex-col justify-center items-center  my-12 text-center select-none  bg-primary-color2 dark:bg-base-200 bg-opacity-35 relative  rounded-lg gap-3 bg-no-repeat overflow-hidden shadow-md shadow-primary-color2   bg-contain" id="assignments-banner">
                                     <div className=" bg-primary-color2 h-60 sm:bg-transparent text-center gap-3 flex flex-col justify-center items-center">
                                           <h1 className=" text-xl md:text-2xl xl:text-4xl text-center font-bold ">Assignments Overview</h1>
                                           <p className=" w-full ">Track, manage, and complete assignments shared by all users</p>
