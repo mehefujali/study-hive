@@ -13,7 +13,13 @@ const Assignments = () => {
             axios.get(`${import.meta.env.VITE_backend_URL}/assignments`)
                   .then(res => setAssignments(res.data))
       }, [signal])
-
+      
+      const handleFilterAssignments = (e) => {
+            const filter = e.target.value 
+            console.log(filter)
+            axios.get(`${import.meta.env.VITE_backend_URL}/filter-assignments?filter=${filter}`)
+                  .then(res => setAssignments(res.data))
+      }
       
       return (
             <div >
@@ -46,11 +52,11 @@ const Assignments = () => {
                                                 </div>
                                                 <div>
                                                       <label className=" text-sm border rounded-md p-2" htmlFor=".filter-select">Filter :
-                                                            <select name="" id="" className=" filter-select select select-sm  focus:border-none focus:outline-none">
-                                                                  <option value="Easy">All</option>
+                                                            <select onChange={handleFilterAssignments} name="" id="" className=" filter-select select select-sm  focus:border-none focus:outline-none">
+                                                                  <option value="All">All</option>
                                                                   <option value="Easy">Easy</option>
-                                                                  <option value="Midium">Midium</option>
-                                                                  <option value="Heard">Heard</option>
+                                                                  <option value="Medium">Medium</option>
+                                                                  <option value="Hard">Hard</option>
                                                             </select>
                                                       </label>
                                                 </div>

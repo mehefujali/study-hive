@@ -148,7 +148,7 @@ const PendingAssignments = () => {
                                                             <td>{assignment.title}</td>
                                                             <td>{assignment.marks}</td>
                                                             <td>{assignment.user}</td>
-                                                            <td><button onClick={() => handleGiveMarks(assignment)} className=" btn btn-sm bg-primary-color text-white text-nowrap">Give Marks</button></td>
+                                                            <td><button onClick={() => handleGiveMarks(assignment)} className=" btn btn-sm bg-primary-color rounded text-white text-nowrap">Give Mark</button></td>
                                                       </tr>)
                                                 }
 
