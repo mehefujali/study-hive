@@ -14,26 +14,38 @@ const Assignments = () => {
       useEffect(() => {
             setLoding(true)
             axios.get(`${import.meta.env.VITE_backend_URL}/assignments`)
-                  .then(res => setAssignments(res.data))
-            setLoding(false)
+                  .then(res => {
+                        setAssignments(res.data)
+
+                        setLoding(false)
+                  })
+
       }, [signal])
 
       const handleFilterAssignments = (e) => {
+
+            setLoding(true)
             const filter = e.target.value
 
             axios.get(`${import.meta.env.VITE_backend_URL}/filter-assignments?filter=${filter}`)
-                  .then(res => setAssignments(res.data))
+                  .then(res => {
+                        setAssignments(res.data)
+                        setLoding(false)
+                  })
       }
       const handleSearchAssignments = (e) => {
+            setLoding(true)
             const search = e.target.value
 
             axios.get(`${import.meta.env.VITE_backend_URL}/filter-assignments?search=${search}`)
-                  .then(res => setAssignments(res.data))
+                  .then(res => {setAssignments(res.data)
+                        setLoding(false)
+                  })
       }
 
       return (
             <div >
-                  { loding ? <Loder/> :<div>
+                   <div>
                         <ScrollRestoration></ScrollRestoration>
                         <div className="container mx-auto w-11/12 xl:w-full">
                               <div className="flex flex-col justify-center items-center  my-12 text-center select-none  bg-primary-color2 dark:bg-base-200 bg-opacity-35 relative  rounded-lg gap-3 bg-no-repeat overflow-hidden shadow-md shadow-primary-color2   bg-contain" id="assignments-banner">
@@ -72,19 +84,19 @@ const Assignments = () => {
                                                 </div>
                                           </div>
                                           <div className="divider my-3 py-0"></div>
-                                          <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                                          { loding ? <Loder/>:<div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                                                 {/* assignment cards  */}
 
                                                 {
                                                       assignments.map(assignment => <AssignmentCard key={assignment._id} assignment={assignment}></AssignmentCard>)
                                                 }
 
-                                          </div>
+                                          </div>}
                                     </div>
                               </div>
                         </div>
 
-                  </div>}
+                  </div>
             </div>
       );
 };

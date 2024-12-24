@@ -3,18 +3,23 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/Authprovider";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loder from "../../Components/Loder/Loder";
 
 
 const PendingAssignments = () => {
       const [assignments, setAssignments] = useState([])
       const { user } = useContext(AuthContext)
       const [signal, setSignal] = useState(null)
+      const [loding, setLoding] = useState(false)
       const axiosSecure = useAxiosSecure()
       useEffect(() => {
+            setLoding(true)
             axiosSecure.get(`${import.meta.env.VITE_backend_URL}/pending-assignments`)
                   .then(res => {
                         setAssignments(res.data)
+                        setLoding(false)
                   })
+            
       }, [signal])
 
       const handleGiveMarks = async (assignment) => {
@@ -132,7 +137,8 @@ const PendingAssignments = () => {
                         <div>
 
 
-                              {assignments.length < 1 ? <div className=" w-fit flex items-center  flex-col gap-2 mx-auto mt-10 md:mt-20">
+
+                              {loding ? <Loder /> : assignments.length < 1 ? <div className=" w-fit flex items-center  flex-col gap-2 mx-auto mt-10 md:mt-20">
                                     <img className=" w-24 opacity-45" src="https://cdn-icons-png.flaticon.com/512/5842/5842026.png" alt="" />
                                     <h1 className=" text-3xl text-center font-light text-gray-500 dark:text-white"> No Pending assignment available </h1>
                               </div> : <div className="overflow-x-auto">
