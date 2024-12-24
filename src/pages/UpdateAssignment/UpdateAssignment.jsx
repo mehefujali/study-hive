@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { ScrollRestoration, useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const UpdateAssignment = () => {
@@ -13,6 +14,7 @@ const UpdateAssignment = () => {
       const [startDate, setStartDate] = useState(null);
       const date = format(new Date(startDate), "dd/MM/yyyy");
       const { user } = useContext(AuthContext)
+      const axiosSecure = useAxiosSecure()
       const handleUpdateAssignment = (e) => {
             e.preventDefault()
             const form = e.target
@@ -33,7 +35,7 @@ const UpdateAssignment = () => {
                   creatorEmail: user?.email,
             }
 
-            axios.put(`${import.meta.env.VITE_backend_URL}/update-assignment/${assignment._id}`, newAssignment)
+            axiosSecure.put(`${import.meta.env.VITE_backend_URL}/update-assignment/${assignment._id}`, newAssignment)
                   .then(res => {
                         if (res.data.modifiedCount) {
                               Swal.fire({

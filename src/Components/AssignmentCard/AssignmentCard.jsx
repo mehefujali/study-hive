@@ -8,12 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { signalContext } from "../../context/SignalProvider";
 import { AuthContext } from "../../context/Authprovider";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const AssignmentCard = ({ assignment }) => {
       const { setSignal } = useContext(signalContext)
       const { user } = useContext(AuthContext)
       const navigate = useNavigate()
+      const axiosSecure = useAxiosSecure()
       const handleDeleteAssignMent = () => {
             if (user.email !== assignment.creatorEmail) {
                   Swal.fire({
@@ -37,7 +39,7 @@ const AssignmentCard = ({ assignment }) => {
                   customClass: "shadow-md shadow-primary-color2 rounded-lg"
             }).then((result) => {
                   if (result.isConfirmed) {
-                        axios.delete(`${import.meta.env.VITE_backend_URL}/assignments/${assignment._id}`)
+                        axiosSecure.delete(`${import.meta.env.VITE_backend_URL}/assignments/${assignment._id}`)
                               .then(res => {
                                     if (res.data.deletedCount) {
                                           Swal.fire({
@@ -56,7 +58,7 @@ const AssignmentCard = ({ assignment }) => {
       }
       return (
             <div >
-                  <div className=" rounded-md overflow-hidden shadow-md dark:shadow-gray-400">
+                  <div className=" rounded-md overflow-hidden h-full flex flex-col justify-between shadow-md dark:shadow-gray-400">
                         <div>
                               <img className=" w-full object-cover h-72" src={assignment.thumbnail} alt="" />
                         </div>

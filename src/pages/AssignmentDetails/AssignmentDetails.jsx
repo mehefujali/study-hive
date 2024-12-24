@@ -3,13 +3,14 @@ import { useContext } from "react";
 import { ScrollRestoration, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/Authprovider";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const AssignmentDetails = () => {
       const assignment = useLoaderData()
       const {user} = useContext(AuthContext)
       const navigate = useNavigate()
-      
+      const axiosSecure = useAxiosSecure()
       const handleTakeAssignment = async () => {
 
             
@@ -61,7 +62,7 @@ const AssignmentDetails = () => {
                   }
             }).then((result) => {
                   if (result.isConfirmed) {
-                        axios.post(`${import.meta.env.VITE_backend_URL}/submit-assignment` , result.value)
+                        axiosSecure.post(`${import.meta.env.VITE_backend_URL}/submit-assignment` , result.value)
                         .then(res => {
                               if(res.data.insertedId){
                                     Swal.fire({

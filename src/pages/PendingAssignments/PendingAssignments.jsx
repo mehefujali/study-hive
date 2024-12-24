@@ -2,18 +2,21 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/Authprovider";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const PendingAssignments = () => {
       const [assignments, setAssignments] = useState([])
       const { user } = useContext(AuthContext)
       const [signal, setSignal] = useState(null)
+      const axiosSecure = useAxiosSecure()
       useEffect(() => {
-            axios.get(`${import.meta.env.VITE_backend_URL}/pending-assignments`)
+            axiosSecure.get(`${import.meta.env.VITE_backend_URL}/pending-assignments`)
                   .then(res => {
                         setAssignments(res.data)
                   })
       }, [signal])
+      
       const handleGiveMarks = async (assignment) => {
 
 
