@@ -58,25 +58,27 @@ const Navbar = () => {
                                           </div>
                                           <ul
                                                 tabIndex={0}
-                                                className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-2 shadow dark:text-white">
-                                                <div
-                                                      className="w-fit h-fit cursor-pointer text-black dark:text-white active:scale-90"
-                                                      onClick={handleChangeTheme}
-                                                >
-                                                      {theme === "light" ? (
-                                                            <h1 className="w-10 text-2xl">
-                                                                  <MdDarkMode />
-                                                            </h1>
-                                                      ) : (
-                                                            <h1 className="text-2xl w-10">
-                                                                  <MdOutlineLightMode />
-                                                            </h1>
-                                                      )}
-                                                </div>
+                                                className="menu navlinks space-y-3 menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-2 shadow dark:text-white">
+
+                                                <NavLink to="/">Home</NavLink>
                                                 <NavLink to="/assignments">Assignments</NavLink>
                                                 {
                                                       user && <NavLink to='/pending-assignments'>Pending Assignments</NavLink>
                                                 }
+                                                <div
+                                                      className="w-fit h-fit cursor-pointer text-black dark:text-white active:scale-90 join"
+                                                      onClick={handleChangeTheme}
+                                                >
+
+                                                      <button className={` ${theme=== "light" && 'bg-primary-color text-white'} btn btn-xs w-full dark:text-white join-item text-lg rounded`}>
+                                                            <MdDarkMode />
+                                                      </button>
+
+                                                      <button className={`text-lg ${theme=== "dark" && 'bg-primary-color text-white'} dark:text-white rounded btn btn-xs w-full join-item `}>
+                                                            <MdOutlineLightMode />
+                                                      </button>
+
+                                                </div>
                                           </ul>
                                     </div>
                                     <Link to={'/'} className=" flex items-center text-xl md:text-2xl lg:text-3xl font-bold">
@@ -93,7 +95,7 @@ const Navbar = () => {
 
                               <div className="navbar-end">
                                     <div className="hidden lg:flex mr-8">
-                                          <ul className="menu menu-horizontal px-1 gap-3 font-semibold text-gray-500 dark:text-white  text-[16px] ">
+                                          <ul className="menu menu-horizontal navlinks px-1 gap-3 font-semibold text-gray-500 dark:text-white  text-[16px] ">
                                                 <div
                                                       className="w-fit h-fit cursor-pointer text-black dark:text-white active:scale-90"
                                                       onClick={handleChangeTheme}
@@ -108,6 +110,7 @@ const Navbar = () => {
                                                             </h1>
                                                       )}
                                                 </div>
+                                                <NavLink to="/">Home</NavLink>
                                                 <NavLink to="/assignments">Assignments</NavLink>
                                                 {
                                                       user && <NavLink to="/pending-assignments">Pending Assignments</NavLink>
