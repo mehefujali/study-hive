@@ -70,11 +70,11 @@ const Navbar = () => {
                                                       onClick={handleChangeTheme}
                                                 >
 
-                                                      <button className={` ${theme=== "light" && 'bg-primary-color text-white'} btn btn-xs w-full dark:text-white join-item text-lg rounded`}>
+                                                      <button className={` ${theme=== "dark" && 'bg-primary-color text-white'} btn btn-xs w-full dark:text-white join-item text-lg rounded`}>
                                                             <MdDarkMode />
                                                       </button>
 
-                                                      <button className={`text-lg ${theme=== "dark" && 'bg-primary-color text-white'} dark:text-white rounded btn btn-xs w-full join-item `}>
+                                                      <button className={`text-lg ${theme=== "light" && 'bg-primary-color text-white'} dark:text-white rounded btn btn-xs w-full join-item `}>
                                                             <MdOutlineLightMode />
                                                       </button>
 
