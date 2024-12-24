@@ -52,8 +52,8 @@ const Navbar = () => {
                   <div className=" ">
                         <div className="navbar md:w-11/12 mx-auto">
                               <div className="navbar-start">
-                                    <div className="dropdown">
-                                          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                                    <div className="dropdown ">
+                                          <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">
                                                 <TfiMenuAlt className=" text-2xl" />
                                           </div>
                                           <ul
@@ -94,7 +94,7 @@ const Navbar = () => {
                               </div>
 
                               <div className="navbar-end">
-                                    <div className="hidden lg:flex mr-8">
+                                    <div className="hidden xl:flex mr-8">
                                           <ul className="menu menu-horizontal navlinks px-1 gap-3 font-semibold text-gray-500 dark:text-white  text-[16px] ">
                                                 <div
                                                       className="w-fit h-fit cursor-pointer text-black dark:text-white active:scale-90"

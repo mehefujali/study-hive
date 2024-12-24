@@ -17,6 +17,7 @@ const Footer = () => {
                               </nav>
                               <nav>
                                     <h6 className="footer-title">Quick Links</h6>
+                                    <NavLink to="/">Home</NavLink>
                                     <NavLink to="/assignments">Assignments</NavLink>
                                     {
                                           user && <NavLink to='/pending-assignments'>Pending Assignments</NavLink>
