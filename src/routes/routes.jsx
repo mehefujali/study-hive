@@ -10,9 +10,11 @@ import AssignmentDetails from "../pages/AssignmentDetails/AssignmentDetails";
 import Mysubmited from "../pages/Mysubmited/Mysubmited";
 import PendingAssignments from "../pages/PendingAssignments/PendingAssignments";
 import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
+import Error from "../pages/error/Error";
 
 const routes = createBrowserRouter([
       {
+            errorElement: <Error />,
             path: '/',
             element: <Root></Root>,
             children: [
@@ -42,29 +44,29 @@ const routes = createBrowserRouter([
                         path: 'assignment-details/:id',
                         element: <PriveteRoute>
                               <AssignmentDetails />
-                        </PriveteRoute> ,
-                        loader : ({params})=> fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
-                        
+                        </PriveteRoute>,
+                        loader: ({ params }) => fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
+
                   },
                   {
-                        path : 'my-submited-assignment' ,
-                        element : <PriveteRoute>
-                              <Mysubmited/>
+                        path: 'my-submited-assignment',
+                        element: <PriveteRoute>
+                              <Mysubmited />
                         </PriveteRoute>
                   },
                   {
-                        path : 'pending-assignments' ,
-                        element : <PriveteRoute>
-                              <PendingAssignments/>
+                        path: 'pending-assignments',
+                        element: <PriveteRoute>
+                              <PendingAssignments />
                         </PriveteRoute>
                   },
                   {
-                        path : 'update-assignment/:id' ,
-                        element : <PriveteRoute>
-                              <UpdateAssignment/>
-                        </PriveteRoute> ,
-                        loader : ({params})=> fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
-                        
+                        path: 'update-assignment/:id',
+                        element: <PriveteRoute>
+                              <UpdateAssignment />
+                        </PriveteRoute>,
+                        loader: ({ params }) => fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
+
                   }
             ]
       }
