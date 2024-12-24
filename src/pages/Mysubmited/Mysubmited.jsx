@@ -3,14 +3,16 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/Authprovider";
 import SubmitedAssignmentCard from "../../Components/SubmitedAssignmentCard/SubmitedAssignmentCard";
 import Loder from "../../Components/Loder/Loder";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Mysubmited = () => {
       const { user } = useContext(AuthContext)
       const [loding , setLoding ] = useState(false)
       const [assignments,setAssignments] = useState([])
+      const axiosSecure = useAxiosSecure()
       useEffect(() => {
             setLoding(true)
-            axios.get(`${import.meta.env.VITE_backend_URL}/my-submited-assignment?email=${user.email}`)
+            axiosSecure.get(`${import.meta.env.VITE_backend_URL}/my-submited-assignment?email=${user.email}`)
             .then(res=>{
                   setAssignments(res.data)
                   setLoding(false)
