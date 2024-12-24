@@ -16,7 +16,7 @@ const PendingAssignments = () => {
                         setAssignments(res.data)
                   })
       }, [signal])
-      
+
       const handleGiveMarks = async (assignment) => {
 
 
@@ -132,7 +132,10 @@ const PendingAssignments = () => {
                         <div>
 
 
-                              <div className="overflow-x-auto">
+                              {assignments.length < 1 ? <div className=" w-fit flex items-center  flex-col gap-2 mx-auto mt-10 md:mt-20">
+                                    <img className=" w-24 opacity-45" src="https://cdn-icons-png.flaticon.com/512/5842/5842026.png" alt="" />
+                                    <h1 className=" text-3xl text-center font-light text-gray-500 dark:text-white"> No Pending assignment available </h1>
+                              </div> : <div className="overflow-x-auto">
                                     <table className="table table-zebra">
                                           {/* head */}
                                           <thead>
@@ -157,7 +160,7 @@ const PendingAssignments = () => {
 
                                           </tbody>
                                     </table>
-                              </div>
+                              </div>}
 
                         </div>
 

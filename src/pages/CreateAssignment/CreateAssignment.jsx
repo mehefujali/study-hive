@@ -5,11 +5,13 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/Authprovider";
+import { useNavigate } from "react-router-dom";
 
 const CreateAssignment = () => {
       const [startDate, setStartDate] = useState(new Date());
       const date = format(new Date(startDate), "dd/MM/yyyy");
       const { user } = useContext(AuthContext)
+      const navigate = useNavigate()
       const handleCreateAssignment = (e) => {
             e.preventDefault()
             const form = e.target
@@ -39,6 +41,7 @@ const CreateAssignment = () => {
                                     draggable: true
                               });
                               form.reset()
+                              navigate('/assignments')
                         }
                   })
 
