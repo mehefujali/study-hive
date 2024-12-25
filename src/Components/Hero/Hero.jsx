@@ -11,7 +11,7 @@ const Hero = () => {
 
                   <div className="container relative w-11/12 dark:text-white mx-auto flex flex-col lg:flex-row justify-between items-center gap-8">
                         <img
-                              className='hidden animate__infinite hero-cercle lg:flex w-40 absolute top-5 xl:top-10 animate__animated animate__rotateIn'
+                              className='hidden animate__infinite hero-cercle xl:flex w-32 2xl:w-40 absolute top-5 xl:top-0 2xl:top-10 animate__animated animate__rotateIn'
                               src="https://i.ibb.co/YLFWQqz/victor.png"
                               alt=""
                         />
@@ -20,7 +20,7 @@ const Hero = () => {
                         <div className=" w-full lg:w-5/12 flex flex-col gap-4">
                               <h1 className=" text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">Learn Together, Grow <span className=" text-primary-color">Together!</span></h1>
                               <p className=" text-lg">Join our online group study platform to collaborate, share knowledge, and boost your learning experience with friends.</p>
-                              <p className=" text-gray-500 dark:text-white ">{`Welcome to StudyMate, the ultimate platform for students to study together, complete assignments, and help each other grow. Whether you're looking to collaborate on projects, get feedback on your work, or simply share knowledge with friends, our platform makes learning fun and effective. Join us today and take your learning to the next level!`}</p>
+                              <p className=" text-gray-500 dark:text-white ">{`Welcome to StudyMate, the ultimate platform for students to study together, complete assignments, and help each other grow. Whether you're looking to collaborate on projects, get feedback on your work, or simply share knowledge with friends!`}</p>
 
                               <div className=' flex gap-1 mt-9'>
                                     <Link to='/assignments' className=' btn btn-sm md:btn-md  hover:bg-primary-color bg-primary-color text-white'>Get Started</Link>
