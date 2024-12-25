@@ -45,7 +45,7 @@ const routes = createBrowserRouter([
                         element: <PriveteRoute>
                               <AssignmentDetails />
                         </PriveteRoute>,
-                        loader: ({ params }) => fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
+                       
 
                   },
                   {

@@ -1,16 +1,30 @@
 import axios from "axios";
-import { useContext } from "react";
-import { ScrollRestoration, useLoaderData, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { ScrollRestoration, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/Authprovider";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loder from "../../Components/Loder/Loder";
 
 
 const AssignmentDetails = () => {
-      const assignment = useLoaderData()
+      const [assignment ,setAssignment ] = useState({})
       const {user} = useContext(AuthContext)
       const navigate = useNavigate()
       const axiosSecure = useAxiosSecure()
+
+      const {id} = useParams()
+      const [loding , setLoding] = useState(false)
+
+     useEffect(()=>{
+      setLoding(true)
+      axiosSecure.get(`${import.meta.env.VITE_backend_URL}/assignment-details/${id}`)
+      .then((res) => {
+            setAssignment(res.data)
+      })
+      setLoding(false)
+     })
+
       const handleTakeAssignment = async () => {
 
             
@@ -87,19 +101,21 @@ const AssignmentDetails = () => {
                   <ScrollRestoration></ScrollRestoration>
                   <div className=" container mx-auto w-11/12 mt-11 h-full flex items-center justify-center">
 
-                        <div className=" w-full md:w-8/12 border rounded-lg overflow-hidden">
-                              <img className=" w-full object-cover max-h-[50vh] " src={assignment?.thumbnail} alt="" />
-                              <div>
-                                    <div className=" p-6   ">
-                                          <h1 className=" text-xl md:text-2xl xl:text-3xl font-bold">{assignment.title}</h1>
-                                          <p>{assignment.description}</p>
-                                          <p><span className=" font-semibold">Marks :</span> {assignment.marks}</p>
-                                          <p><span className=" font-semibold">Difficulty lavel :</span> {assignment.difficulty}</p>
-                                          <p><span className=" font-semibold">Due date :</span> {assignment.date}</p>
-                                          <button onClick={handleTakeAssignment} className=" btn rounded bg-primary-color text-white hover:bg-primary-color2 w-full mt-3 ">Take assignment</button>
-                                    </div>
-                              </div>
-                        </div>
+                        {
+                         loding? <Loder></Loder> :<div className=" w-full md:w-8/12 border rounded-lg overflow-hidden">
+                         <img className=" w-full object-cover max-h-[50vh] " src={assignment?.thumbnail} alt="" />
+                         <div>
+                               <div className=" p-6   ">
+                                     <h1 className=" text-xl md:text-2xl xl:text-3xl font-bold">{assignment.title}</h1>
+                                     <p>{assignment.description}</p>
+                                     <p><span className=" font-semibold">Marks :</span> {assignment.marks}</p>
+                                     <p><span className=" font-semibold">Difficulty lavel :</span> {assignment.difficulty}</p>
+                                     <p><span className=" font-semibold">Due date :</span> {assignment.date}</p>
+                                     <button onClick={handleTakeAssignment} className=" btn rounded bg-primary-color text-white hover:bg-primary-color2 w-full mt-3 ">Take assignment</button>
+                               </div>
+                         </div>
+                   </div>
+                        }
 
                   </div>
             </div>
