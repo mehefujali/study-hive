@@ -3,7 +3,7 @@
 const Feature = () => {
       return (
             <div className=" my-20">
-                  <div className="container mx-auto w-11/12 ">
+                  <div className="container mx-auto w-11/12  " id="feature-section">
                         <div className=" ">
                               <h1 className=" text-xl md:text-2xl lg:text-3xl font-bold divider divider-start">Key Features of Study Hive </h1>
                               <p className="w-11/12  md:w-5/12 text-gray-500 dark:text-white">Discover the powerful features of Study Hive that make learning together more effective and enjoyable. From collaborative assignments to real-time feedback, our platform is designed to enhance your study experience.</p>
