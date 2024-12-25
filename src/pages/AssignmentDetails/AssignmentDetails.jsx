@@ -12,7 +12,7 @@ const AssignmentDetails = () => {
       const {user} = useContext(AuthContext)
       const navigate = useNavigate()
       const axiosSecure = useAxiosSecure()
-
+        
       const {id} = useParams()
       const [loding , setLoding] = useState(false)
 
@@ -76,6 +76,7 @@ const AssignmentDetails = () => {
                         return {googleDocsLink,quicknote , user : user.displayName , email:user.email , assignmentId : assignment._id , status: 'pending'}
                   }
             }).then((result) => {
+                  
                   if (result.isConfirmed) {
                         axiosSecure.post(`${import.meta.env.VITE_backend_URL}/submit-assignment` , result.value)
                         .then(res => {

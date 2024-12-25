@@ -42,12 +42,16 @@ const Register = () => {
                               displayName: name,
                               photoURL: photo
                         })
+                       .then(()=> {
                         setUser({
+                              email ,
                               displayName: name,
                               photoURL: photo
                         })
-
                         toast.success(' Account Created Successfully! ')
+                       }) 
+
+                        
 
                   })
                   .catch((err) => {
