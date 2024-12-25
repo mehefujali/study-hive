@@ -6,11 +6,13 @@ import { ScrollRestoration, useNavigate, useParams } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loder from "../../Components/Loder/Loder";
 
 
 const UpdateAssignment = () => {
 
       const {id} = useParams()
+      const [loding ,setLoding] = useState(false)
       const [assignment , setAssignment  ] = useState({})
       const navigate = useNavigate()
       const [startDate, setStartDate] = useState(new Date().toISOString());
@@ -18,11 +20,11 @@ const UpdateAssignment = () => {
       const { user } = useContext(AuthContext)
       const axiosSecure = useAxiosSecure()
       useEffect(()=>{
-         
+           setLoding(true)
             axiosSecure.get(`${import.meta.env.VITE_backend_URL}/assignment-details/${id}`)
             .then((res) => {
                   setAssignment(res.data)
-                
+                 setLoding(false)
             })
             
            } , [])
@@ -75,7 +77,7 @@ const UpdateAssignment = () => {
                   <div className=" h-full mt-10  flex items-center justify-center">
 
 
-                        <div className="w-11/12 mb-16  md:w-9/12 lg:w-7/12 border-primary-color2  border-2  shadow-primary-color2 p-7 rounded-md shadow-md">
+                        {loding? <Loder/>:<div className="w-11/12 mb-16  md:w-9/12 lg:w-7/12 border-primary-color2  border-2  shadow-primary-color2 p-7 rounded-md shadow-md">
 
                               <form onSubmit={handleUpdateAssignment} action="" className=" space-y-3 gap-6  w-full md:grid grid-cols-12">
                                     <label className=" flex flex-col mt-3 col-span-6 " htmlFor="">
@@ -150,13 +152,13 @@ const UpdateAssignment = () => {
 
 
 
-                                    <button className=" col-span-12 btn bg-primary-color text-white hover:bg-primary-color w-full">Create assignment</button>
+                                    <button className=" col-span-12 btn bg-primary-color text-white hover:bg-primary-color w-full">Update assignment</button>
 
                               </form>
                               <div className="divider"></div>
 
 
-                        </div>
+                        </div>}
                   </div>
             </div>
       );
