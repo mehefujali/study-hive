@@ -21,9 +21,10 @@ const AssignmentDetails = () => {
       axiosSecure.get(`${import.meta.env.VITE_backend_URL}/assignment-details/${id}`)
       .then((res) => {
             setAssignment(res.data)
+            setLoding(false)
       })
-      setLoding(false)
-     })
+      
+     } , [])
 
       const handleTakeAssignment = async () => {
 
