@@ -23,8 +23,8 @@ const Hero = () => {
                               <p className=" text-gray-500 dark:text-white ">{`Welcome to StudyMate, the ultimate platform for students to study together, complete assignments, and help each other grow. Whether you're looking to collaborate on projects, get feedback on your work, or simply share knowledge with friends!`}</p>
 
                               <div className=' flex gap-1 mt-9'>
-                                    <Link to='/assignments' className=' btn btn-sm md:btn-md  hover:bg-primary-color bg-primary-color text-white'>Get Started</Link>
-                                    <Link to="" className='  btn btn-sm md:btn-md btn-outline hover:bg-transparent hover:text-primary-color border-primary-color'>Learn More</Link>
+                                    <Link to='/assignments' className=' btn  md:btn-md  hover:bg-primary-color bg-primary-color text-white'>Get Started</Link>
+                                    <Link to="" className='  btn  md:btn-md btn-outline hover:bg-transparent hover:text-primary-color border-primary-color'>Learn More</Link>
                               </div>
                         </div>
                         <div  className=' img-bg relative'>
