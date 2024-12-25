@@ -64,8 +64,8 @@ const routes = createBrowserRouter([
                         path: 'update-assignment/:id',
                         element: <PriveteRoute>
                               <UpdateAssignment />
-                        </PriveteRoute>,
-                        loader: ({ params }) => fetch(`${import.meta.env.VITE_backend_URL}/assignment-details/${params.id}`)
+                        </PriveteRoute>
+                       
 
                   }
             ]
