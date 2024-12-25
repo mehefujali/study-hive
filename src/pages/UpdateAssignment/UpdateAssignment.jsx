@@ -1,20 +1,33 @@
 import DatePicker from "react-datepicker";
 import { AuthContext } from "../../context/Authprovider";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { format } from "date-fns";
-import { ScrollRestoration, useLoaderData, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { ScrollRestoration, useNavigate, useParams } from "react-router-dom";
+
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const UpdateAssignment = () => {
-      const assignment = useLoaderData()
+
+      const {id} = useParams()
+      const [assignment , setAssignment  ] = useState({})
       const navigate = useNavigate()
-      const [startDate, setStartDate] = useState(null);
+      const [startDate, setStartDate] = useState(new Date().toISOString());
       const date = format(new Date(startDate), "dd/MM/yyyy");
       const { user } = useContext(AuthContext)
       const axiosSecure = useAxiosSecure()
+      useEffect(()=>{
+         
+            axiosSecure.get(`${import.meta.env.VITE_backend_URL}/assignment-details/${id}`)
+            .then((res) => {
+                  setAssignment(res.data)
+                
+            })
+            
+           } , [])
+     
+     
       const handleUpdateAssignment = (e) => {
             e.preventDefault()
             const form = e.target
@@ -127,9 +140,9 @@ const UpdateAssignment = () => {
                                           Due date
                                           <DatePicker
                                                 className="rounded input focus:outline-none border-primary-color box-border w-full"
-                                                selected={startDate ||new Date(assignment.date.split('/').reverse().join('-'))} // Fixed date parsing
-                                                onChange={(date) => setStartDate(date)} // Update state on change
-                                                minDate={new Date()} // Prevent selection of past dates
+                                                selected={startDate ||new Date(assignment?.date?.split('/').reverse().join('-'))} 
+                                                onChange={(date) => setStartDate(date)} 
+                                                minDate={new Date()}
                                           />
                                     </label>
 
