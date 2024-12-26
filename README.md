@@ -27,3 +27,4 @@ Study Hive Live : https://study-hive-k.web.app
 - **Database:** MongoDB
 - **Authentication:** Firebase
 - **Styling:** Tailwind CSS / CSS Modules
+- **Date picker:** React date picker
