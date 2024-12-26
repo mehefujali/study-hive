@@ -15,7 +15,7 @@ const UpdateAssignment = () => {
       const [loding ,setLoding] = useState(false)
       const [assignment , setAssignment  ] = useState({})
       const navigate = useNavigate()
-      const [startDate, setStartDate] = useState(new Date().toISOString());
+      const [startDate, setStartDate] = useState(new Date());
       const date = format(new Date(startDate), "dd/MM/yyyy");
       const { user } = useContext(AuthContext)
       const axiosSecure = useAxiosSecure()
@@ -142,7 +142,7 @@ const UpdateAssignment = () => {
                                           Due date
                                           <DatePicker
                                                 className="rounded input focus:outline-none border-primary-color box-border w-full"
-                                                selected={startDate ||new Date(assignment?.date?.split('/').reverse().join('-'))} 
+                                                selected={startDate ||new Date()} 
                                                 onChange={(date) => setStartDate(date)} 
                                                 minDate={new Date()}
                                           />

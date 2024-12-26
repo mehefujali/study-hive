@@ -8,9 +8,11 @@ import Loder from "../Components/Loder/Loder";
 const PriveteRoute = ({children}) => {
       const {user , loding} = useContext(AuthContext)
       const {pathname} = useLocation()
+      
       if(loding) {
             return <Loder/>
       }
+      
       if(user){
             return children
       }

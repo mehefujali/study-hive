@@ -26,7 +26,7 @@ const Authprovider = ({ children }) => {
       }
       useEffect(() => {
             const unSubscribe = onAuthStateChanged(auth, (cureentUser) => {
-                  setUser(cureentUser)
+                  
                 
                   if (cureentUser?.email) {
                         const user = { email: cureentUser?.email }
@@ -34,12 +34,13 @@ const Authprovider = ({ children }) => {
                               withCredentials: true
                         })
                               .then(() => {
-
+                                    setUser(cureentUser)
                                     setLoding(false)
                               }
                               )
                   }
                   else {
+                        setUser(cureentUser)
                         axios.post(`${import.meta.env.VITE_backend_URL}/logout`, {}, {
                               withCredentials: true
                         })
