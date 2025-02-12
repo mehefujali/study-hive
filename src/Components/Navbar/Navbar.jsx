@@ -48,7 +48,7 @@ const Navbar = () => {
             setTheme(theme === "dark" ? "light" : "dark");
       };
       return (
-            <div className={`${pathname === '/' && "absolute top-0  z-50 w-full"} select-none`}>
+            <div className={` fixed top-0 bg-white  z-50 w-full select-none`}>
                   <div className=" ">
                         <div className="navbar md:w-11/12 mx-auto">
                               <div className="navbar-start">
