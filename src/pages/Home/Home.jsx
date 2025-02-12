@@ -1,6 +1,8 @@
 import Faq from "../../Components/Faq/Faq";
 import Feature from "../../Components/Feature/Feature";
 import Hero from "../../Components/Hero/Hero";
+import Newslatter from "../../Components/Newslater/Newslater";
+import Patners from "../../Components/Patners/Patners";
 
 
 const Home = () => {
@@ -14,6 +16,12 @@ const Home = () => {
                   </div>
                   <div>
                         <Faq></Faq>
+                  </div>
+                  <div>
+                        <Newslatter/>
+                  </div>
+                  <div>
+                        <Patners/>
                   </div>
             </div>
       );

@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import 'animate.css';
 import { TfiMenuAlt } from "react-icons/tfi";
 import { useContext } from "react";
