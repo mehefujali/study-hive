@@ -14,7 +14,7 @@ const Root = () => {
             document.documentElement.setAttribute('data-theme', theme);
       }, [theme]);
       return (
-            <div className=" dark:text-white">
+            <div className=" dark:text-white mt-16">
                   <Toaster
                         position="top-center"
                         reverseOrder={false}

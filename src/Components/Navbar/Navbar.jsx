@@ -13,7 +13,7 @@ import './nav.css'
 const Navbar = () => {
       const { user, signOutUser } = useContext(AuthContext)
       const { theme, setTheme } = useContext(themeContext)
-      const { pathname } = useLocation()
+   
 
       const handleSignOut = () => {
             Swal.fire({
@@ -95,7 +95,7 @@ const Navbar = () => {
 
                               <div className="navbar-end">
                                     <div className="hidden xl:flex mr-8">
-                                          <ul className="menu menu-horizontal navlinks px-1 gap-3 font-semibold text-gray-500 dark:text-white  text-[16px] ">
+                                          <ul className="menu menu-horizontal navlinks px-1 gap-3 font-semibold text-gray-500 dark:text-white  text-sm ">
                                                 <div
                                                       className="w-fit h-fit cursor-pointer text-black dark:text-white active:scale-90"
                                                       onClick={handleChangeTheme}
@@ -115,6 +115,10 @@ const Navbar = () => {
                                                 {
                                                       user && <NavLink to="/pending-assignments">Pending Assignments</NavLink>
                                                 }
+                                               
+                                                
+                                                <NavLink to="/my-submited-assignment" className=" flex gap-1 text-center"> About us</NavLink>
+                                                <NavLink to="/my-submited-assignment" className=" flex gap-1 text-center">Support</NavLink>
 
                                           </ul>
                                     </div>
